@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="<txp:lang />" dir="<txp:text item=" lang_dir" />">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title><txp:page_title /><txp:if_section> - <txp:section title /></txp:if_section></title>
+    <meta property="og:url" content="<txp:site_url />">
+    <meta property="og:title" content="<txp:section title />">
+    <meta property="og:description" content="<txp:section description />">
+<txp:if_search>
+    <meta name="robots" content="none"><txp:else />
+    <txp:if_author>
+    <meta name="robots" content="noindex, follow">
+    <txp:else />
+        <txp:meta_description />
+        <txp:if_category>
+    <meta name="robots" content="noindex, follow">
+        <txp:else />
+            <txp:variable name="page" value='<txp:page_url type="pg" />' />
+            <txp:if_variable name="page" value="1">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="<txp:site_url />">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "headline": "<txp:site_name escape="json" />",
+        <txp:if_description>"description": "<txp:meta_description format="" escape="json" />",</txp:if_description>
+        "url": "<txp:site_url escape="json" />"
+    }
+    </script>
+            <txp:else />
+    <meta name="robots" content="noindex, follow">
+            </txp:if_variable>
+            <txp:variable name="front-page" value="1" />
+        </txp:if_category>
+    </txp:if_author>
+</txp:if_search>
+    <txp:feed_link flavor="rss" format="link" label="rss" />
+    <txp:feed_link flavor="atom" format="link" label="atom" />
+    <style>
+        :root {
+            --width: 720px;
+            --font-main: Verdana, sans-serif;
+            --font-secondary: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Helvetica,Arial,"PingFangSC-Regular","Hiragino Sans GB","Lantinghei SC","Microsoft Yahei","Source Han Sans CN","WenQuanYi Micro Hei",SimSun,sans-serif;
+            --font-scale: 1em;
+            --background-color: #fff;
+            --heading-color: #222;
+            --text-color: #444;
+            --link-color: #3273dc;
+            --visited-color: #8b6fcb;
+            --code-background-color: #eee;
+            --code-color: #222;
+            --blockquote-color: #222;
+            --gray-color: #999;
+            --color-gray-light: #ccc;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background-color: #111;
+                --heading-color: #eee;
+                --text-color: #ddd;
+                --link-color: #8cc2dd;
+                --visited-color: #8b6fcb;
+                --code-background-color: #333;
+                --code-color: #ddd;
+                --blockquote-color: #ccc;
+                --gray-color: #999;
+                --color-gray-light: #333;
+            }
+        }
+        body {
+            font-family: var(--font-secondary);
+            font-size: var(--font-scale);
+            margin: auto;
+            padding: 1rem;
+            max-width: var(--width);
+            text-align: left;
+            background-color: var(--background-color);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-main);
+            color: var(--heading-color);
+        }
+        a {
+            color: var(--link-color);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        nav a {
+            margin-right: .618rem;
+        }
+        strong,
+        b {
+            color: var(--heading-color);
+        }
+        button {
+            margin: 0;
+            cursor: pointer;
+        }
+        time {
+            font-family: monospace;
+            font-style: normal;
+            font-size: 15px;
+        }
+        main {
+            line-height: 1.6;
+        }
+        table {
+            width: 100%;
+        }
+        hr {
+            border: 0;
+            border-top: 1px dashed;
+        }
+        img {
+            max-width: 100%;
+        }
+        code {
+            font-family: monospace;
+            padding: 0.382rem;
+            background-color: var(--code-background-color);
+            color: var(--code-color);
+            border-radius: .382rem;
+        }
+        blockquote {
+            border-left: 1px solid var(--color-gray-light);
+            color: var(--code-color);
+            padding-left: 20px;
+            font-style: italic;
+        }
+        footer {
+            padding: .618rem;
+            text-align: center;
+        }
+
+        .title:hover {
+            text-decoration: none;
+        }
+        .title h1 {
+            font-size: 1.5em;
+        }
+        .inline {
+            width: auto !important;
+        }
+        .highlight,
+        .code {
+            padding: 1px 1rem;
+            background-color: var(--code-background-color);
+            color: var(--code-color);
+            border-radius: .382px;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            overflow-x: auto;
+        }
+
+        /* blog post list */
+        ul.blog-posts {
+            list-style-type: none;
+            padding: unset;
+        }
+        ul.blog-posts li {
+            display: flex;
+        }
+        ul.blog-posts li span {
+            flex: 0 0 130px;
+        }
+        ul.blog-posts li a:visited {
+            color: var(--visited-color);
+        }
+        
+        header {
+            padding: 1.618rem 0
+        }
+        .tags {
+            margin-top: 2rem;
+            color:var(--gray-color)
+        }
+        .tags a {
+            margin: 0 5px 0 2px
+        }
+        article time + a {
+            margin: 0 0 0 .618rem;
+        }
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+        table th,
+        table td {
+            border: solid 1px var(--color-gray-light);
+            padding: 0.5rem;
+        }
+        pre code {
+            display: block;
+        }
+        .align-left {  }
+        .align-right { text-align: right; }
+        .align-center { display: block; margin: auto 0; }
+    </style>
+</head>
+
+<body 
+    <txp:if_variable name="front-page">
+        class="home front-page" itemscope itemtype="https://schema.org/WebPage"
+    <txp:else />
+        <txp:if_search>
+        class="search-page" itemscope itemtype="https://schema.org/SearchResultsPage"
+        <txp:else />
+        class="listing-page" itemscope itemtype="https://schema.org/CollectionPage"
+        </txp:if_search>
+    </txp:if_variable>
+>
+    <header>
+        <a class="title" href="/">
+            <h1>
+                <txp:link_to_home>
+                    <txp:site_name />
+                </txp:link_to_home>&nbsp;
+                <txp:evaluate>
+                    <txp:site_slogan />
+                </txp:evaluate>
+            </h1>
+        </a>
+        <nav aria-label="<txp:text item=" site_nav" />" itemscope itemtype="https://schema.org/SiteNavigationElement">
+            <txp:section_list include_default="1" default_title='<txp:text item="home" />' break="" sort="title" sections="articles,projects,thinking">
+                <a itemprop="url" href="<txp:section url />"
+                    <txp:if_section name='<txp:section />'>
+                        aria-current="page"
+                    </txp:if_section>
+                    <txp:if_section name='<txp:section />'>
+                        class="active"
+                    </txp:if_section>
+                ><txp:section title /></a>
+            </txp:section_list>
+        </nav>
+    </header>
+
+    <main class="sm-12 md-9 col" aria-label="<txp:text item=" main_content" />" itemscope itemtype="https://schema.org/Blog">
+        <!-- is this the search result page? also omits the pagination links below (uses pagination format within search_display.txp instead) -->
+        <txp:if_search>
+            <txp:output_form form="search_display" />
+        <txp:else />
+            <txp:if_section name="default">
+        <h2>你好，我是狸鱼。</h2>
+        <p>我写文章、写软件，我住在深圳。</p>
+        <p>我在 Herman 的 <a href='//bearblog.dev' target='_blank'>Bear</a> 启发下，借用了 Yayu 的 <a href='//yayu.net/projects/wordpress-dear' target='_blank'>Dear</a> 的样式，为 TextPattern 创造了 <a href='//blog.tt4e.com' target='_blank'>Tear</a> 主题。我也做一些其它的事情，这里有一个<a href='/projects/'>项目</a>列表。</p>
+        <p>我常写一些关于生活和技术的<a href='/articles/'>文章</a>，也分享一些有趣的<a href='/thinking/'>想法</a>，本站主要记录建站游戏背后的故事。</p>
+            </txp:if_section>
+            <!-- else is this the front page? -->
+            <txp:if_variable name="front-page">
+                <!-- links by default to form: 'default.txp' unless you specify a different form -->
+                <txp:if_individual_article>
+                    <txp:article />
+                <txp:else />
+        <h2 style="margin: 3rem 0 1rem 0"><txp:if_section name="default">近期文章<txp:else /><txp:section title /></txp:if_section></h2>
+                    <txp:if_article_list>
+                        <txp:article form="article_listing" limit="10" />
+                    </txp:if_article_list>
+
+                </txp:if_individual_article>
+            <txp:else />
+                <!-- else is this an article author list? -->
+                <txp:if_author>
+                    <p class="section-title" itemprop="name">
+                        <txp:text item="author" />
+                        <txp:author />
+                    </p>
+                <txp:else />
+                    <!-- else is this an article category list? -->
+                    <txp:if_category>
+                        <p class="section-title" itemprop="name">
+                            <txp:text item="category" />
+                            <txp:category title />
+                        </p>
+                    </txp:if_category>
+                </txp:if_author>
+                <txp:article form="article_listing" limit="10" />
+            </txp:if_variable>
+
+            <!-- add pagination links to foot of front page/author listings/category listings if there are more articles available -->
+            <txp:evaluate test="newer,older">
+                <nav class="paginator" aria-label="<txp:text item=" page_nav" />">
+                <txp:newer rel="prev">
+                    <txp:text item="newer" />
+                </txp:newer>
+                <txp:older rel="next">
+                    <txp:text item="older" />
+                </txp:older>
+                </nav>
+            </txp:evaluate>
+        </txp:if_search>
+    </main>
+    <footer style="padding:25px 0;">
+        <span id="footer-directive">
+            <p><small>订阅 <a href='/rss/'>RSS</a>，加入 <a href='/subscribe/'>邮件列表</a>，或 <a
+                        href='mailto:d4e@msn.cn'>Say hello</a>.</small></p>
+            <script>
+                // Select the main container and the blog posts list
+                const mainContainer = document.querySelector('main');
+                const blogPosts = document.querySelector('.blog-posts');
+
+                if (blogPosts) {
+                    const searchInput = document.createElement('input');
+                    searchInput.type = 'text';
+                    searchInput.id = 'searchInput';
+                    searchInput.placeholder = 'Search...';
+                    searchInput.style.display = 'block';
+
+                    mainContainer.insertBefore(searchInput, blogPosts);
+
+                    // Add event listener to filter posts based on input
+                    searchInput.addEventListener('input', function () {
+                        const searchTerm = this.value.toLowerCase();
+                        const posts = document.querySelectorAll('.blog-posts li');
+
+                        posts.forEach(post => {
+                            const title = post.textContent.toLowerCase();
+                            post.style.display = title.includes(searchTerm) ? '' : 'none';
+                        });
+                    });
+                }
+            </script>
+        </span>
+        <span>
+            <a href="https://blog.tt4e.com">Tear Theme </a> 🐟 狸鱼<br>&lt;o)#)))≦
+        </span>
+    </footer>
+</body>
+
+</html>

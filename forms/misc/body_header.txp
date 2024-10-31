@@ -1,0 +1,40 @@
+<header class="row">
+    <nav class="site-navigation border fixed split-nav" aria-label="<txp:text item="site_nav" />" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <div class="nav-brand">
+            <span class="brand"><txp:link_to_home><txp:site_name /></txp:link_to_home></span>&nbsp;
+            <span class="slogan"><txp:evaluate><txp:site_slogan /></txp:evaluate></span>
+        </div>
+        <div class="collapsible">
+            <input id="collapsible1" type="checkbox" name="collapsible1">
+            <label for="collapsible1">
+              <div class="bar1"></div>
+              <div class="bar2"></div>
+              <div class="bar3"></div>
+            </label>
+            <div class="collapsible-body">
+                <ul class="inline">
+                    <li>
+                        <a itemprop="url" href="/"><txp:text item="home" /></a>
+                    </li>
+                <txp:section_list default_title='<txp:text item="home" />' break="" sort="title">
+                    <txp:if_status>
+                    <li<txp:if_section name='<txp:section />'> class="active"</txp:if_section>>   
+                        <a itemprop="url" href="<txp:section url />"<txp:if_section name='<txp:section />'> aria-current="page"</txp:if_section>><txp:section title /></a>
+                    </li>
+                    <txp:else />
+                    <li>
+                        <a itemprop="url" href="<txp:section url />"><txp:section title /></a>
+                    </li>
+                    </txp:if_status>
+                </txp:section_list>
+                    <li>
+                        |
+                    </li>
+                    <li>
+                        <txp:feed_link class="feed-rss" label="rss" /> / <txp:feed_link class="feed-atom" flavor="atom" label="atom" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

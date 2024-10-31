@@ -1,0 +1,25 @@
+<aside class="sm-12 md-3 col sidebar">
+<!--
+    <section class="paper">
+       <p class="section-title"><txp:text item="categories" /></p>
+        <txp:etc_tree circular="3" wraptag="" break="">
+	    <txp:category_list wraptag="ul" break="li" parent='<txp:category />' exclude='<txp:category />' children="0">
+		<txp:category title="1" link="1" />
+		<txp:etc_tree />
+	    </txp:category_list>
+        </txp:etc_tree>
+    </section>
+-->
+
+<txp:if_individual_article>
+
+    <section class="paper toc">
+        <p class="section-title">目录</p>
+        <div id="toc"></div>
+    </section>
+
+<txp:else />
+
+</txp:if_individual_article>
+
+</aside>

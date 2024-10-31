@@ -1,0 +1,23 @@
+<article class="article" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting"
+<txp:if_section name="thinking">
+    style="margin: 2rem 0 0 0;"
+</txp:if_section>
+>
+    <meta itemprop="dateModified" content="<txp:modified format='%Y-%m-%d %h-%M-%S' />" />
+<txp:if_section name="thinking">
+    <a href="<txp:permlink />" itemprop="url mainEntityOfPage" title="<txp:excerpt escape='p' />">
+        <txp:title />
+    </a>
+    <time style="color: var(--color-gray-light); font-size: .618rem" itemprop="datePublished" datetime='<txp:posted format="%Y-%m-%d %H:%M:%S" />'>
+        <txp:posted format="%Y-%m-%d %H:%M:%S" />
+    </time>    
+<txp:else />
+    <time style="color: var(--color-gray);" itemprop="datePublished" datetime='<txp:posted format="%Y-%m-%d %H:%M:%S" />'>
+        <txp:posted format="%Y-%m-%d" />
+    </time>
+    <a href="<txp:permlink />" itemprop="url mainEntityOfPage" title="<txp:excerpt escape='p' />">
+        <txp:title />
+    </a>
+</txp:if_section>
+
+</article>

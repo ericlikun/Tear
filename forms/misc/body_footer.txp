@@ -1,0 +1,23 @@
+    <footer>
+        <div class="row flex-spaces">
+            <section class="sm-3 col">
+                <p class="section-title"></p>
+            </section>
+            <section class="sm-3 col">
+                <p class="section-title"></p>
+            </section>
+            <section class="sm-3 col">
+                <p class="section-title"></p>
+            </section>
+            <section class="sm-3 col">
+                <p class="section-title"><txp:text item="links" /></p>
+                <txp:evaluate test="linklist">
+                    <txp:linklist wraptag="ul" break="li" />
+                </txp:evaluate>
+            </section>
+        </div>
+
+        <div class="text-center">
+            <p>Except where otherwise <a href="/policies/#license">noted</a>, content on this site is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/"> Creative Commons Attribution 4.0 International license</a>. </p>
+        </div>
+    </footer>
